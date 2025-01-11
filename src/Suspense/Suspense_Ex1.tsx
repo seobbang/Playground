@@ -33,12 +33,12 @@ function PromiseComp() {
 }
 
 function fetchData() {
-  let result;
+  let result: string;
 
   const promise = new Promise((resolve) => {
     setTimeout(() => resolve("Data loaded!"), 2000);
   }).then((res) => {
-    result = res;
+    if (typeof res === "string") result = res;
   });
 
   return {
@@ -54,7 +54,7 @@ function fetchData() {
 // 🟢: lazy comp
 const LazyComp = lazy(() => delay(import("./LazyComp.tsx")));
 
-function delay(promise: Promise<any>) {
+function delay<T>(promise: Promise<T>): Promise<T> {
   return new Promise((resolve) => {
     setTimeout(resolve, 2000);
   }).then(() => promise);
