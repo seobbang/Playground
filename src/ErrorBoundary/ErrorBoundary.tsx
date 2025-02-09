@@ -20,7 +20,7 @@ export class ErrorBoundary extends React.Component<PropsWithChildren<Props>, Sta
   // static
   // - this 사용 불가 -> this.setState 호출 대신 그냥 return 하는 것
   static getDerivedStateFromError(error: Error) {
-    console.log("getDrivedStateFromError");
+    console.log("getDrivedStateFromError"); // (3)
     // 다음 렌더링에서 폴백 ui가 보이도록 상태 업데이트
     return { error };
   }
@@ -29,25 +29,25 @@ export class ErrorBoundary extends React.Component<PropsWithChildren<Props>, Sta
   // this 사용 가능
   // setState 사용 가능. 그치만 권장되지 않음 => 불필요한 추가 렌더링이 발생될 수 있기 때문
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log("componentDidCatch");
+    console.log("componentDidCatch"); // (6)
 
     // 이렇게 로그도 남길 수 있음!
     console.log("log:", error, errorInfo);
   }
 
   render() {
-    console.log("render");
+    console.log("render"); // (1) (4)
 
     const { renderFallback, children } = this.props;
     const { error } = this.state;
 
     if (error != null) {
-      console.log("renderFallback");
+      console.log("renderFallback"); // (5)
 
       return renderFallback(error);
     }
 
-    console.log("children");
+    console.log("children"); // (2)
 
     return children;
   }
