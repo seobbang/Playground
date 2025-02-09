@@ -6,11 +6,11 @@ import { ErrorBoundary_Ex1 } from "./ErrorBoundary/ErrorBoundary_Ex1";
 function App() {
   return (
     <>
-      {/* <Suspense_Ex1 />
+      <Suspense_Ex1 />
       <Spacing value={50} />
 
       <DeferredValueEx1 />
-      <Spacing value={50} /> */}
+      <Spacing value={50} />
 
       <ErrorBoundary_Ex1 />
     </>
